@@ -375,14 +375,7 @@ onUnmounted(() => {
 
 <template>
 
-  <div
-    :class="
-      darkMode
-        ? 'bg-slate-950 text-white'
-        : 'bg-slate-100 text-slate-900'
-    "
-    class="min-h-screen flex transition-colors duration-300"
-  >
+  <div :class="{ 'is-dark': darkMode }" class="app-shell min-h-screen flex transition-colors duration-300">
 
 
     <!-- ================================= -->
@@ -401,7 +394,7 @@ onUnmounted(() => {
     <!-- MAIN AREA -->
     <!-- ================================= -->
 
-    <div class="flex-1 min-w-0">
+    <div class="flex-1 min-w-0 flex flex-col">
 
       <Topbar
         :system-name="systemName"
@@ -415,14 +408,7 @@ onUnmounted(() => {
       <!-- CONTENT -->
       <!-- ================================= -->
 
-      <main
-        :class="
-          darkMode
-            ? 'bg-slate-950'
-            : 'bg-slate-100'
-        "
-        class="p-6 min-h-[calc(100vh-64px)] transition-colors duration-300"
-      >
+      <main class="app-content flex-1 p-4 sm:p-6 lg:p-8 transition-colors duration-300">
 
 
         <!-- ================================= -->
@@ -924,6 +910,12 @@ onUnmounted(() => {
         </div>
 
       </main>
+
+      <footer class="app-footer px-6 py-5 text-center text-sm">
+        <span class="font-semibold">Attendance Monitoring System</span>
+        <span class="mx-2 opacity-50">•</span>
+        Built by Juner Punzal for BSCS 3A
+      </footer>
 
     </div>
 

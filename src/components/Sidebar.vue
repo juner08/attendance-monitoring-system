@@ -73,7 +73,7 @@ const navigate = (page) => {
 
   <!-- Sidebar -->
   <aside
-    class="fixed lg:static inset-y-0 left-0 z-40 w-64 min-h-screen bg-slate-900 text-white flex flex-col transform transition-transform duration-300"
+    class="app-sidebar fixed lg:static inset-y-0 left-0 z-40 w-72 min-h-screen text-white flex flex-col transform transition-transform duration-300"
     :class="
       mobileOpen
         ? 'translate-x-0'
@@ -82,19 +82,19 @@ const navigate = (page) => {
   >
 
     <!-- Logo -->
-    <div class="px-6 py-6 border-b border-slate-700">
+    <div class="px-6 py-7 border-b border-white/10">
 
       <div class="flex items-center gap-3">
 
         <div
-          class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-xl"
+          class="w-11 h-11 rounded-2xl bg-white/15 ring-1 ring-white/20 flex items-center justify-center text-xl shadow-lg"
         >
           📋
         </div>
 
         <div>
           <h1 class="font-bold text-sm">
-            Attendance
+            Attendance Hub
           </h1>
 
           <p class="text-xs text-slate-400">
@@ -110,7 +110,7 @@ const navigate = (page) => {
     <nav class="flex-1 px-4 py-6">
 
       <p
-        class="text-xs font-semibold text-slate-500 uppercase px-3 mb-3"
+        class="text-[11px] font-bold tracking-[0.16em] text-blue-200/55 uppercase px-3 mb-3"
       >
         Main Menu
       </p>
@@ -121,11 +121,11 @@ const navigate = (page) => {
           v-for="item in menuItems"
           :key="item.name"
           @click="navigate(item.name)"
-          class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition text-left"
+          class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 text-left"
           :class="
             props.activePage === item.name
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+              ? 'bg-white text-slate-900 shadow-lg shadow-blue-950/25'
+              : 'text-blue-100/75 hover:bg-white/10 hover:text-white'
           "
         >
 
@@ -144,9 +144,9 @@ const navigate = (page) => {
     </nav>
 
     <!-- Bottom Information -->
-    <div class="p-4 border-t border-slate-700">
+    <div class="p-5 border-t border-white/10">
 
-      <div class="bg-slate-800 rounded-xl p-4">
+      <div class="bg-white/10 rounded-2xl p-4 ring-1 ring-white/10">
 
         <p class="text-sm font-semibold">
           {{ props.schoolName }}

@@ -18,13 +18,18 @@ defineProps({
   description: {
     type: String,
     default: ''
+  },
+
+  tone: {
+    type: String,
+    default: 'blue'
   }
 })
 </script>
 
 <template>
   <div
-    class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition"
+    class="stat-card bg-white rounded-3xl border border-slate-200 p-5 shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
   >
 
     <div class="flex items-start justify-between">
@@ -51,7 +56,8 @@ defineProps({
 
       <!-- Icon -->
       <div
-        class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl"
+        :class="`stat-card__icon stat-card__icon--${tone}`"
+        class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
       >
         {{ icon }}
       </div>

@@ -42,14 +42,19 @@ const goToReports = () => {
   <div class="space-y-6">
 
     <!-- Welcome -->
-    <div>
-      <h1 class="text-2xl font-bold text-slate-900">
+    <div class="dashboard-hero overflow-hidden relative rounded-3xl px-6 py-8 sm:px-9 sm:py-10">
+      <div class="relative z-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-100/80">Daily overview</p>
+      <h1 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-white">
         Good morning, Administrator 👋
       </h1>
 
-      <p class="text-slate-500 mt-1">
-        Here's today's attendance overview.
+      <p class="text-blue-100 mt-3 max-w-xl">
+        Stay on top of class participation with a clear view of today’s attendance.
       </p>
+      </div>
+      <div class="dashboard-hero__orb dashboard-hero__orb--one"></div>
+      <div class="dashboard-hero__orb dashboard-hero__orb--two"></div>
     </div>
 
     <!-- Statistics -->
@@ -60,6 +65,7 @@ const goToReports = () => {
         :value="totalStudents"
         icon="👨‍🎓"
         description="Registered students"
+        tone="blue"
       />
 
       <StatCard
@@ -67,6 +73,7 @@ const goToReports = () => {
         :value="presentToday"
         icon="✓"
         description="Students present"
+        tone="green"
       />
 
       <StatCard
@@ -74,6 +81,7 @@ const goToReports = () => {
         :value="lateToday"
         icon="⏰"
         description="Students arrived late"
+        tone="amber"
       />
 
       <StatCard
@@ -81,13 +89,14 @@ const goToReports = () => {
         :value="absentToday"
         icon="✕"
         description="Students absent"
+        tone="red"
       />
 
     </div>
 
     <!-- Attendance Rate -->
     <div
-      class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm"
+      class="dashboard-panel bg-white rounded-3xl border border-slate-200 p-6 shadow-sm"
     >
 
       <div class="flex items-center justify-between mb-4">
@@ -135,7 +144,7 @@ const goToReports = () => {
 
     <!-- Quick Actions -->
     <div
-      class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm"
+      class="dashboard-panel bg-white rounded-3xl border border-slate-200 p-6 shadow-sm"
     >
 
       <h2 class="text-lg font-bold text-slate-900">
