@@ -473,7 +473,7 @@ onUnmounted(() => {
           class="space-y-6"
         >
 
-          <div>
+          <div class="page-heading">
 
             <h1 class="text-2xl font-bold">
               Attendance Reports
@@ -766,7 +766,7 @@ onUnmounted(() => {
           class="space-y-6"
         >
 
-          <div>
+          <div class="page-heading">
 
             <h1 class="text-2xl font-bold">
               Settings
@@ -898,7 +898,7 @@ onUnmounted(() => {
 
               <button
                 @click="saveSettings"
-                class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+              class="primary-action bg-blue-600 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-blue-700 transition"
               >
                 Save Settings
               </button>

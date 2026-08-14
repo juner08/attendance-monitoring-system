@@ -240,9 +240,7 @@ const removeStudent = (student) => {
     <!-- HEADER -->
     <!-- ================================= -->
 
-    <div
-      class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-    >
+    <div class="page-heading flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
       <div>
 
@@ -261,7 +259,7 @@ const removeStudent = (student) => {
 
       <button
         @click="openAddForm"
-        class="bg-blue-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+        class="primary-action bg-blue-600 text-white px-5 py-3 rounded-2xl font-semibold hover:bg-blue-700 transition"
       >
         + Add Student
       </button>
