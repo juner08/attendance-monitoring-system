@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Attendance Monitoring System Report</title>
+  <style>
+    @page { size: A4; margin: 18mm; }
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; color: #172033; line-height: 1.5; font-size: 11pt; }
+    h1 { color: #1d4ed8; font-size: 27pt; margin-bottom: 4px; }
+    h2 { color: #1e3a8a; border-bottom: 2px solid #bfdbfe; padding-bottom: 5px; margin-top: 26px; }
+    h3 { color: #1d4ed8; margin-bottom: 4px; }
+    .subtitle { color: #475569; font-size: 14pt; margin-top: 0; }
+    .meta { margin: 26px 0; padding: 16px; background: #eff6ff; border-left: 5px solid #2563eb; }
+    .page-break { break-before: page; }
+    ul { padding-left: 20px; }
+    table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+    th, td { border: 1px solid #cbd5e1; padding: 9px; text-align: left; vertical-align: top; }
+    th { background: #dbeafe; color: #1e3a8a; }
+    figure { margin: 18px 0 28px; break-inside: avoid; }
+    img { width: 100%; border: 1px solid #94a3b8; border-radius: 6px; }
+    figcaption { color: #475569; font-style: italic; margin-top: 6px; }
+    code { background: #f1f5f9; padding: 1px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>Attendance Monitoring System</h1>
+  <p class="subtitle">Vue 3 Web Application — Technical Documentation Report</p>
+
+  <div class="meta">
+    <strong>Developer:</strong> Juner Punzal<br>
+    <strong>Course/Section:</strong> BSCS 3A<br>
+    <strong>Technologies:</strong> Vue 3, Vite, Tailwind CSS, Local Storage
+  </div>
+
+  <h2>1. System Overview</h2>
+  <p>The Attendance Monitoring System is a single-page web application that helps an administrator register students, record daily attendance, monitor current attendance statistics, and review individual attendance performance. The application is responsive, uses a consistent dashboard layout, and preserves data in the browser using local storage.</p>
+
+  <h2>2. Architecture and Vue Implementation</h2>
+  <p>The system is organized into reusable Vue components. <code>App.vue</code> controls page navigation, settings, dashboard totals, and reports. Feature-specific interface components such as <code>Students.vue</code> and <code>Attendance.vue</code> communicate through props and emitted events. Shared business logic is contained in composables, keeping the interface separate from data operations.</p>
+  <table>
+    <thead><tr><th>Area</th><th>Implementation</th></tr></thead>
+    <tbody>
+      <tr><td>Reactivity</td><td>Vue <code>ref</code> and <code>computed</code> state automatically update lists, totals, searches, filters, and reports.</td></tr>
+      <tr><td>Component communication</td><td>Parent-to-child props and child-to-parent events support navigation, forms, confirmation dialogs, and notifications.</td></tr>
+      <tr><td>Persistence</td><td>Students, attendance records, system details, and dark-mode preference are saved in browser local storage.</td></tr>
+      <tr><td>Navigation</td><td>Sidebar, dashboard quick actions, header actions, and hash URLs such as <code>/#attendance</code> provide predictable navigation.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. CRUD Features</h2>
+  <table>
+    <thead><tr><th>Operation</th><th>Student Management</th><th>Attendance Management</th></tr></thead>
+    <tbody>
+      <tr><td>Create</td><td>Adds a student ID, name, and course with required-field validation.</td><td>Records a student, date, status, and optional remarks.</td></tr>
+      <tr><td>Read</td><td>Displays a searchable student table.</td><td>Displays searchable and status-filtered records with student course information.</td></tr>
+      <tr><td>Update</td><td>Edits student information; an edited student ID is propagated to related attendance records.</td><td>Edits the student, date, status, or remarks of an existing record.</td></tr>
+      <tr><td>Delete</td><td>Removes a selected student after confirmation.</td><td>Uses a confirmation dialog before deleting a record.</td></tr>
+    </tbody>
+  </table>
+  <p>Attendance validation prevents a duplicate record for the same student on the same date. Supported statuses are Present, Late, Absent, and Excused.</p>
+
+  <div class="page-break"></div>
+  <h2>4. Interface Screenshots</h2>
+  <figure>
+    <img src="../.report-assets/dashboard.png" alt="Dashboard screenshot">
+    <figcaption>Figure 1. Dashboard showing daily metrics, attendance-rate progress, sidebar navigation, and quick actions.</figcaption>
+  </figure>
+  <figure>
+    <img src="../.report-assets/attendance.png" alt="Attendance screenshot">
+    <figcaption>Figure 2. Attendance page with statistics, searchable/filterable record list, and record-management actions.</figcaption>
+  </figure>
+  <figure>
+    <img src="../.report-assets/reports.png" alt="Reports screenshot">
+    <figcaption>Figure 3. Reports page summarizing daily attendance and each student's overall performance.</figcaption>
+  </figure>
+
+  <h2>5. Running and Building the Project</h2>
+  <p>Install dependencies with <code>npm install</code>. Start development mode with <code>npm run dev</code>. Create an optimized production build with <code>npm run build</code>. The production build completed successfully during verification.</p>
+
+  <h2>6. Version Control and Submission</h2>
+  <p>The project is initialized as a Git repository with a descriptive initial commit. It is ready to be connected to a public GitHub repository. The submission package excludes <code>node_modules</code>, generated build output, and Git metadata so it is clean and easy to submit.</p>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 import Sidebar from './components/Sidebar.vue'
 import Topbar from './components/Topbar.vue'
@@ -16,6 +16,7 @@ import { useStudents } from './composables/useStudents'
 // ======================================
 
 const activePage = ref('dashboard')
+const pageNames = ['dashboard', 'students', 'attendance', 'reports', 'settings']
 
 const systemName = ref('Attendance Monitoring System')
 const schoolName = ref('BSCS 3A')
@@ -47,7 +48,20 @@ const {
 // ======================================
 
 const changePage = (page) => {
+  if (!pageNames.includes(page)) {
+    return
+  }
+
   activePage.value = page
+
+  if (window.location.hash !== `#${page}`) {
+    window.location.hash = page
+  }
+}
+
+const syncPageFromHash = () => {
+  const page = window.location.hash.slice(1)
+  activePage.value = pageNames.includes(page) ? page : 'dashboard'
 }
 
 
@@ -343,10 +357,17 @@ const saveSettings = () => {
 
 onMounted(() => {
 
+  syncPageFromHash()
+  window.addEventListener('hashchange', syncPageFromHash)
+
   loadSettings()
 
   applyDarkMode()
 
+})
+
+onUnmounted(() => {
+  window.removeEventListener('hashchange', syncPageFromHash)
 })
 
 </script>
