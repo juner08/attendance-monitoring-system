@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .report-assets/
 vite-report.log
+*_Source.zip
 
 # Editor directories and files
 .vscode/*
