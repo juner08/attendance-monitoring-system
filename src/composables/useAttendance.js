@@ -82,6 +82,17 @@ const deleteAttendance = (id) => {
   return { success: true, message: 'Attendance deleted successfully.' }
 }
 
+// Removes records that belong to a student deleted from the student list.
+// Keeping these records would make the Attendance page show "Unknown Student".
+const deleteStudentAttendance = (studentId) => {
+  const originalLength = attendance.value.length
+  attendance.value = attendance.value.filter(record => record.studentId !== studentId)
+
+  if (attendance.value.length !== originalLength) {
+    saveAttendanceData()
+  }
+}
+
 const updateStudentIdReferences = (oldStudentId, newStudentId) => {
   if (oldStudentId === newStudentId) return
   attendance.value.forEach(record => {
@@ -104,5 +115,6 @@ export const useAttendance = () => ({
   addAttendance,
   updateAttendance,
   deleteAttendance,
+  deleteStudentAttendance,
   updateStudentIdReferences
 })

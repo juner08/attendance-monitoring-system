@@ -254,6 +254,10 @@ const deleteStudent = (studentId) => {
     1
   )
 
+  // Defect correction: delete dependent attendance records as well.
+  // Previously, deleting a student left orphaned records in the system.
+  const { deleteStudentAttendance } = useAttendance()
+  deleteStudentAttendance(studentId)
 
   saveStudents()
 
