@@ -125,48 +125,48 @@ const html = `<!DOCTYPE html>
   <h2>3. Evidence Screenshots (from the live website)</h2>
   <p class="small">All screenshots below were captured from the deployed application with the administrator login feature active (repository <span class="link">${repo}</span>).</p>
 
-  <h3>M9-01: Login Page</h3>
-  <div class="shot"><img src="${imgBase64('M9-01_Login_Page.png')}"></div>
-  <p class="caption">The secure administrator login screen (secure password hashing).</p>
+  <h3>M9-01: Module 6 - Architecture Baseline</h3>
+  <div class="shot"><img src="${imgBase64('M9-01_Module6_Architecture_Baseline.png')}"></div>
+  <p class="caption">Architecture baseline: Vue 3 SPA, Vite, Tailwind CSS, localStorage, Student { id, name, course, email }.</p>
 
-  <h3>M9-02: Register Page</h3>
-  <div class="shot"><img src="${imgBase64('M9-02_Register_Page.png')}"></div>
-  <p class="caption">Administrator account registration screen.</p>
+  <h3>M9-02: Module 7 - System Before Change</h3>
+  <div class="shot"><img src="${imgBase64('M9-02_Module7_System_Before_Change.png')}"></div>
+  <p class="caption">The working application before CR-M9-01, with secure administrator login.</p>
 
-  <h3>M9-03: Dashboard</h3>
-  <div class="shot"><img src="${imgBase64('M9-03_Dashboard.png')}"></div>
-  <p class="caption">Main dashboard after login showing attendance statistics.</p>
+  <h3>M9-03: Module 8 - Test Baseline</h3>
+  <div class="shot"><img src="${imgBase64('M9-03_Module8_Test_Baseline.png')}"></div>
+  <p class="caption">Test baseline: manual + automated tests, defect DEF-01 fixed before the change.</p>
 
-  <h3>M9-04: Students Page</h3>
-  <div class="shot"><img src="${imgBase64('M9-04_Students_Page.png')}"></div>
-  <p class="caption">Students page with the "Browse by class" year and section organization (Module 9 feature).</p>
+  <h3>M9-04: Change Request CR-M9-01</h3>
+  <div class="shot"><img src="${imgBase64('M9-04_Change_Request_CR-M9-01.png')}"></div>
+  <p class="caption">CR-M9-01: Organize students by year level and section (Adaptive Maintenance).</p>
 
-  <h3>M9-05: Add Student Form</h3>
-  <div class="shot"><img src="${imgBase64('M9-05_Add_Student_Form.png')}"></div>
-  <p class="caption">Student form with explicit Year level (1-4) and Section (A-Z) fields.</p>
+  <h3>M9-05: Updated Architecture - Module 9</h3>
+  <div class="shot"><img src="${imgBase64('M9-05_Updated_Architecture.png')}"></div>
+  <p class="caption">Updated architecture with normalizeStudent(), yearLevel and section fields, backward compatible.</p>
 </div>
 
 <!-- EVIDENCE M9-06..M9-10 -->
 <div class="page">
-  <h3>M9-06: Browse by Class (Evolved System)</h3>
-  <div class="shot"><img src="${imgBase64('M9-06_Browse_By_Class.png')}"></div>
-  <p class="caption">Year-level cards with section groupings and student counts (adaptive evolution).</p>
+  <h3>M9-06: Implementation - Code Changes</h3>
+  <div class="shot"><img src="${imgBase64('M9-06_Implementation_Code_Changes.png')}"></div>
+  <p class="caption">Real code changes in useStudents.js (normalizeStudent, validation) and Students.vue (Browse by class, filters).</p>
 
-  <h3>M9-07: Year / Section Filtering</h3>
-  <div class="shot"><img src="${imgBase64('M9-07_Year_Section_Filter.png')}"></div>
-  <p class="caption">Filtering students by year level and section, combined with search.</p>
+  <h3>M9-07: Evolved System - Working Implementation</h3>
+  <div class="shot"><img src="${imgBase64('M9-07_Evolved_System_Browse_By_Class.png')}"></div>
+  <p class="caption">Evolved system live: Browse-by-class cards, year/section filters, and the organized student list.</p>
 
-  <h3>M9-08: Attendance Page</h3>
-  <div class="shot"><img src="${imgBase64('M9-08_Attendance_Page.png')}"></div>
-  <p class="caption">Attendance recording preserved and fully functional after evolution.</p>
+  <h3>M9-08: Updated Test Cases</h3>
+  <div class="shot"><img src="${imgBase64('M9-08_Updated_Test_Cases.png')}"></div>
+  <p class="caption">Module 9 unit tests executed against the evolved system - all passing, zero regressions.</p>
 
-  <h3>M9-09: Settings Page</h3>
-  <div class="shot"><img src="${imgBase64('M9-09_Settings_Page.png')}"></div>
-  <p class="caption">System settings including dark mode and system information management.</p>
+  <h3>M9-09: Build &amp; Test Results</h3>
+  <div class="shot"><img src="${imgBase64('M9-09_Build_Test_Results.png')}"></div>
+  <p class="caption">Real production build output - 26 modules transformed, zero errors, production ready.</p>
 
-  <h3>M9-10: Reports Page</h3>
-  <div class="shot"><img src="${imgBase64('M9-10_Reports_Page.png')}"></div>
-  <p class="caption">Student attendance reports and today's statistics.</p>
+  <h3>M9-10: GitHub Actions - CI/CD</h3>
+  <div class="shot"><img src="${imgBase64('M9-10_GitHub_Actions_CICD.png')}"></div>
+  <p class="caption">CI/CD pipeline: GitHub Actions build + test + deploy workflows for this repository.</p>
 </div>
 
 <!-- TEST & DEPLOY -->
@@ -206,7 +206,7 @@ const html = `<!DOCTYPE html>
 
 async function main() {
   // Verify all screenshots exist
-  const names = ['M9-01_Login_Page.png','M9-02_Register_Page.png','M9-03_Dashboard.png','M9-04_Students_Page.png','M9-05_Add_Student_Form.png','M9-06_Browse_By_Class.png','M9-07_Year_Section_Filter.png','M9-08_Attendance_Page.png','M9-09_Settings_Page.png','M9-10_Reports_Page.png'];
+  const names = ['M9-01_Module6_Architecture_Baseline.png','M9-02_Module7_System_Before_Change.png','M9-03_Module8_Test_Baseline.png','M9-04_Change_Request_CR-M9-01.png','M9-05_Updated_Architecture.png','M9-06_Implementation_Code_Changes.png','M9-07_Evolved_System_Browse_By_Class.png','M9-08_Updated_Test_Cases.png','M9-09_Build_Test_Results.png','M9-10_GitHub_Actions_CICD.png'];
   for (const n of names) {
     if (!fs.existsSync(path.join(EVIDENCE, n))) {
       throw new Error('Missing screenshot: ' + n);

@@ -23,16 +23,16 @@ function imageRun(name) {
 }
 
 const screenshots = [
-  { id: 'M9-01', title: 'Login Page', file: 'M9-01_Login_Page.png', caption: 'Secure administrator login screen (PBKDF2 password hashing).' },
-  { id: 'M9-02', title: 'Register Page', file: 'M9-02_Register_Page.png', caption: 'Administrator account registration screen.' },
-  { id: 'M9-03', title: 'Dashboard', file: 'M9-03_Dashboard.png', caption: 'Main dashboard after login with attendance statistics.' },
-  { id: 'M9-04', title: 'Students Page', file: 'M9-04_Students_Page.png', caption: 'Students page with "Browse by class" organization (Module 9 feature).' },
-  { id: 'M9-05', title: 'Add Student Form', file: 'M9-05_Add_Student_Form.png', caption: 'Student form with explicit Year level (1-4) and Section (A-Z) fields.' },
-  { id: 'M9-06', title: 'Browse by Class (Evolved System)', file: 'M9-06_Browse_By_Class.png', caption: 'Year-level cards with section groupings and student counts.' },
-  { id: 'M9-07', title: 'Year / Section Filtering', file: 'M9-07_Year_Section_Filter.png', caption: 'Filtering students by year level and section, combined with search.' },
-  { id: 'M9-08', title: 'Attendance Page', file: 'M9-08_Attendance_Page.png', caption: 'Attendance recording preserved and fully functional after evolution.' },
-  { id: 'M9-09', title: 'Settings Page', file: 'M9-09_Settings_Page.png', caption: 'System settings including dark mode and system information management.' },
-  { id: 'M9-10', title: 'Reports Page', file: 'M9-10_Reports_Page.png', caption: 'Student attendance reports and today statistics.' },
+  { id: 'M9-01', title: 'Module 6 — Architecture Baseline', file: 'M9-01_Module6_Architecture_Baseline.png', caption: 'Architecture baseline: Vue 3 SPA, Vite, Tailwind CSS, localStorage, Student { id, name, course, email }.' },
+  { id: 'M9-02', title: 'Module 7 — System Before Change', file: 'M9-02_Module7_System_Before_Change.png', caption: 'The working application before CR-M9-01, with secure administrator login (PBKDF2).' },
+  { id: 'M9-03', title: 'Module 8 — Test Baseline', file: 'M9-03_Module8_Test_Baseline.png', caption: 'Test baseline: manual + automated tests, defect DEF-01 fixed before the change.' },
+  { id: 'M9-04', title: 'Change Request — CR-M9-01', file: 'M9-04_Change_Request_CR-M9-01.png', caption: 'CR-M9-01: Organize students by year level and section (Adaptive Maintenance).' },
+  { id: 'M9-05', title: 'Updated Architecture — Module 9', file: 'M9-05_Updated_Architecture.png', caption: 'Updated architecture with normalizeStudent(), yearLevel and section fields, backward compatible.' },
+  { id: 'M9-06', title: 'Implementation — Code Changes', file: 'M9-06_Implementation_Code_Changes.png', caption: 'Real code changes in useStudents.js (normalizeStudent, validation) and Students.vue (Browse by class, filters).' },
+  { id: 'M9-07', title: 'Evolved System — Working Implementation', file: 'M9-07_Evolved_System_Browse_By_Class.png', caption: 'Evolved system live: Browse-by-class cards, year/section filters, and the organized student list.' },
+  { id: 'M9-08', title: 'Updated Test Cases', file: 'M9-08_Updated_Test_Cases.png', caption: 'Module 9 unit tests executed against the evolved system — all passing, zero regressions.' },
+  { id: 'M9-09', title: 'Build & Test Results', file: 'M9-09_Build_Test_Results.png', caption: 'Real production build output — 26 modules transformed, zero errors, production ready.' },
+  { id: 'M9-10', title: 'GitHub Actions — CI/CD', file: 'M9-10_GitHub_Actions_CICD.png', caption: 'CI/CD pipeline: GitHub Actions build + test + deploy workflows for this repository.' },
 ];
 
 const sections = [];
