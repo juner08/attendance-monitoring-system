@@ -23,5 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run regression tests
+        run: npm test
+
       - name: Build Vue application
         run: npm run build

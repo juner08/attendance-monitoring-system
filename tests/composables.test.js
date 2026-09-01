@@ -21,8 +21,23 @@ describe('Attendance Monitoring System', () => {
     const result = system.addStudent({ id: ' 2026-001 ', name: ' Ana Cruz ', course: ' BSCS 3A ' })
 
     expect(result).toMatchObject({ success: true })
-    expect(system.students.value).toEqual([{ id: '2026-001', name: 'Ana Cruz', course: 'BSCS 3A' }])
+    expect(system.students.value).toEqual([expect.objectContaining({
+      id: '2026-001', name: 'Ana Cruz', course: 'BSCS 3A', yearLevel: '3', section: 'A'
+    })])
     expect(JSON.parse(localStorage.getItem('students'))).toHaveLength(1)
+  })
+
+  it('keeps legacy course records navigable by deriving their year level and section', () => {
+    system.addStudent({ id: '2026-011', name: 'Cara Santos', course: 'BSCS 2B' })
+
+    expect(system.students.value[0]).toMatchObject({
+      course: 'BSCS 2B', yearLevel: '2', section: 'B'
+    })
+  })
+
+  it('requires a year level and section for newly structured student records', () => {
+    expect(system.addStudent({ id: '2026-012', name: 'Dan Reyes', course: 'BSCS', yearLevel: '1' }))
+      .toEqual({ success: false, message: 'Year level and section are required.' })
   })
 
   it('rejects a duplicate student ID', () => {

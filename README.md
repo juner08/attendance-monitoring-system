@@ -13,6 +13,17 @@ A Vue 3 single-page application for managing students and their daily attendance
 - Configurable system details and dark mode
 - Shareable hash navigation, such as `/#attendance`
 
+## Module 9 - Software Evolution
+
+**Change request:** CR-M9-01 — Adaptive maintenance: organize students by year level and section while preserving older stored records.
+
+- Student records now keep `yearLevel` and `section` values for class-based browsing and filtering.
+- Older records in the existing `BSCS 3A` format are read safely and derive Year 3 / Section A when loaded.
+- The Students page provides year-level and section cards plus matching filters.
+- The automated tests cover legacy-record compatibility and the required year/section validation; `npm run test` and `npm run build` are used for verification.
+
+**Release:** 0.1.0 — adaptive, backward-compatible enhancement. The app remains a browser-local prototype; authentication and records are stored in browser storage and are not a replacement for server-side security.
+
 ## Run locally
 
 ```bash
