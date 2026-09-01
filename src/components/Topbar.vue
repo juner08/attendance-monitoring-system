@@ -7,7 +7,7 @@ defineProps({
   adminName: { type: String, default: 'Administrator' }
 })
 
-const emit = defineEmits(['navigate'])
+const emit = defineEmits(['navigate', 'logout'])
 
 const showMenu = ref(false)
 
@@ -19,14 +19,21 @@ const openSettings = () => {
   showMenu.value = false
   emit('navigate', 'settings')
 }
+
+const signOut = () => {
+  showMenu.value = false
+  emit('logout')
+}
 </script>
 
 <template>
-  <header class="app-topbar h-20 flex items-center justify-between px-5 sm:px-8 sticky top-0 z-30">
+  <header
+    class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-30"
+  >
 
     <!-- Left -->
     <div>
-      <h2 class="font-bold text-slate-800 tracking-tight">
+      <h2 class="font-bold text-slate-800">
         {{ systemName }}
       </h2>
 
@@ -40,12 +47,12 @@ const openSettings = () => {
 
       <button
         @click="toggleMenu"
-        class="flex items-center gap-3 px-3 py-2 rounded-2xl hover:bg-slate-100 transition"
+        class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-slate-100 transition"
       >
 
         <!-- Avatar -->
         <div
-          class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center font-bold shadow-lg shadow-blue-500/25"
+          class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold"
         >
           A
         </div>
@@ -71,7 +78,7 @@ const openSettings = () => {
       <!-- Dropdown -->
       <div
         v-if="showMenu"
-        class="absolute right-0 mt-3 w-56 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl shadow-xl p-2"
+        class="absolute right-0 mt-2 w-52 bg-white border border-slate-200 rounded-xl shadow-lg p-2"
       >
 
         <div
@@ -94,10 +101,10 @@ const openSettings = () => {
         </button>
 
         <button
-          @click="openSettings"
+          @click="signOut"
           class="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 text-sm text-slate-700"
         >
-          Account Settings
+          Log out
         </button>
 
       </div>

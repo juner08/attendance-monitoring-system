@@ -6,9 +6,11 @@ import Topbar from './components/Topbar.vue'
 import Dashboard from './components/Dashboard.vue'
 import Students from './components/Students.vue'
 import Attendance from './components/Attendance.vue'
+import AuthGate from './components/AuthGate.vue'
 
 import { useAttendance } from './composables/useAttendance'
 import { useStudents } from './composables/useStudents'
+import { useAuth } from './composables/useAuth'
 
 
 // ======================================
@@ -21,6 +23,7 @@ const pageNames = ['dashboard', 'students', 'attendance', 'reports', 'settings']
 const systemName = ref('Attendance Monitoring System')
 const schoolName = ref('BSCS 3A')
 const adminName = ref('Administrator')
+const { currentUser, isAuthenticated, logout } = useAuth()
 
 const darkMode = ref(false)
 
@@ -362,9 +365,22 @@ onMounted(() => {
 
   loadSettings()
 
+  if (currentUser.value?.name) {
+    adminName.value = currentUser.value.name
+  }
+
   applyDarkMode()
 
 })
+
+const handleAuthenticated = () => {
+  if (currentUser.value?.name) adminName.value = currentUser.value.name
+}
+
+const handleLogout = () => {
+  logout()
+  activePage.value = 'dashboard'
+}
 
 onUnmounted(() => {
   window.removeEventListener('hashchange', syncPageFromHash)
@@ -375,7 +391,20 @@ onUnmounted(() => {
 
 <template>
 
-  <div :class="{ 'is-dark': darkMode }" class="app-shell min-h-screen flex transition-colors duration-300">
+  <AuthGate
+    v-if="!isAuthenticated"
+    @authenticated="handleAuthenticated"
+  />
+
+  <div
+    v-else
+    :class="
+      darkMode
+        ? 'bg-slate-950 text-white'
+        : 'bg-slate-100 text-slate-900'
+    "
+    class="min-h-screen flex transition-colors duration-300"
+  >
 
 
     <!-- ================================= -->
@@ -394,13 +423,14 @@ onUnmounted(() => {
     <!-- MAIN AREA -->
     <!-- ================================= -->
 
-    <div class="flex-1 min-w-0 flex flex-col">
+    <div class="flex-1 min-w-0">
 
       <Topbar
         :system-name="systemName"
         :school-name="schoolName"
         :admin-name="adminName"
         @navigate="changePage"
+        @logout="handleLogout"
       />
 
 
@@ -408,7 +438,14 @@ onUnmounted(() => {
       <!-- CONTENT -->
       <!-- ================================= -->
 
-      <main class="app-content flex-1 p-4 sm:p-6 lg:p-8 transition-colors duration-300">
+      <main
+        :class="
+          darkMode
+            ? 'bg-slate-950'
+            : 'bg-slate-100'
+        "
+        class="p-6 min-h-[calc(100vh-64px)] transition-colors duration-300"
+      >
 
 
         <!-- ================================= -->
@@ -473,7 +510,7 @@ onUnmounted(() => {
           class="space-y-6"
         >
 
-          <div class="page-heading">
+          <div>
 
             <h1 class="text-2xl font-bold">
               Attendance Reports
@@ -766,7 +803,7 @@ onUnmounted(() => {
           class="space-y-6"
         >
 
-          <div class="page-heading">
+          <div>
 
             <h1 class="text-2xl font-bold">
               Settings
@@ -898,7 +935,7 @@ onUnmounted(() => {
 
               <button
                 @click="saveSettings"
-              class="primary-action bg-blue-600 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-blue-700 transition"
+                class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
               >
                 Save Settings
               </button>
@@ -910,12 +947,6 @@ onUnmounted(() => {
         </div>
 
       </main>
-
-      <footer class="app-footer px-6 py-5 text-center text-sm">
-        <span class="font-semibold">Attendance Monitoring System</span>
-        <span class="mx-2 opacity-50">•</span>
-        Built by Juner Punzal for BSCS 3A
-      </footer>
 
     </div>
 

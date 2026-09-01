@@ -1,162 +1,42 @@
 @import "tailwindcss";
 
-@layer base {
-  body {
-    min-width: 320px;
-    background: #eef4ff;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  }
+/* The app toggles `.dark` on <html>.  These overrides keep every existing
+   light-theme utility readable without requiring a dark: class on each view. */
+.dark .bg-white { background-color: #172033 !important; }
+.dark .bg-slate-50 { background-color: #202b3e !important; }
+.dark .bg-slate-100 { background-color: #263348 !important; }
+.dark .border-slate-100,
+.dark .border-slate-200 { border-color: #3a4a63 !important; }
+.dark .divide-slate-100 > :not(:last-child) { border-color: #3a4a63 !important; }
 
-  button, input, select, textarea {
-    -webkit-tap-highlight-color: transparent;
-  }
-}
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700 { color: #f1f5f9 !important; }
+.dark .text-slate-600,
+.dark .text-slate-500 { color: #cbd5e1 !important; }
+.dark .text-slate-400 { color: #94a3b8 !important; }
 
-/* Application shell */
-.app-shell {
-  --canvas: #f4f7fc;
-  --card: rgba(255, 255, 255, .92);
-  --border: #e3eaf5;
-  --ink: #13213b;
-  --muted: #63718a;
-  background:
-    radial-gradient(circle at 86% -10%, rgba(117, 159, 255, .20), transparent 31rem),
-    radial-gradient(circle at 34% 110%, rgba(152, 101, 255, .10), transparent 28rem),
-    var(--canvas);
-  color: var(--ink);
-}
+.dark input,
+.dark select,
+.dark textarea { background-color: #0f172a !important; color: #f8fafc !important; border-color: #475569 !important; }
+.dark input::placeholder,
+.dark textarea::placeholder { color: #94a3b8 !important; }
+.dark option { background-color: #0f172a; color: #f8fafc; }
 
-.app-sidebar {
-  background:
-    radial-gradient(circle at 22% 0%, rgba(74, 122, 255, .45), transparent 18rem),
-    linear-gradient(165deg, #132344 0%, #0c1730 58%, #081126 100%);
-  box-shadow: 18px 0 44px rgba(15, 36, 78, .12);
-}
+.dark .hover\:bg-slate-50:hover,
+.dark .hover\:bg-slate-100:hover { background-color: #2b3a52 !important; }
+.dark .hover\:bg-blue-50:hover { background-color: #1e3a5f !important; }
+.dark .bg-blue-50 { background-color: #1e3a5f !important; }
+.dark .text-blue-700 { color: #bfdbfe !important; }
+.dark .text-blue-600 { color: #93c5fd !important; }
 
-.app-topbar {
-  background: rgba(255, 255, 255, .78);
-  border-bottom: 1px solid rgba(209, 220, 238, .75);
-  backdrop-filter: blur(18px);
-}
-
-.app-content {
-  background: transparent;
-}
-
-.app-footer {
-  color: var(--muted);
-}
-
-.dashboard-hero {
-  isolation: isolate;
-  background: linear-gradient(118deg, #123a92 0%, #2855ce 50%, #7553d4 100%);
-  box-shadow: 0 22px 42px rgba(44, 84, 184, .24);
-}
-
-.dashboard-hero__orb {
-  position: absolute;
-  z-index: -1;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .12);
-}
-
-.dashboard-hero__orb--one { width: 17rem; height: 17rem; right: 2%; top: -11rem; }
-.dashboard-hero__orb--two { width: 11rem; height: 11rem; right: 24%; bottom: -7rem; background: rgba(121, 223, 255, .16); }
-
-.stat-card { border-color: var(--border); background: var(--card); }
-.dashboard-panel { border-color: var(--border); background: var(--card); }
-
-.page-heading h1 {
-  letter-spacing: -.035em;
-  color: #10213f;
-}
-
-.page-heading h1::before {
-  content: '';
-  display: block;
-  width: 2.1rem;
-  height: .28rem;
-  margin-bottom: .85rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #2563eb, #8b5cf6);
-}
-
-.page-heading p { max-width: 38rem; }
-
-.primary-action {
-  background: linear-gradient(135deg, #2563eb, #4159df) !important;
-  box-shadow: 0 12px 22px rgba(37, 99, 235, .25) !important;
-}
-
-.primary-action:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
-}
-
-.stat-card__icon--blue { background: #e7efff; }
-.stat-card__icon--green { background: #e8f8ef; }
-.stat-card__icon--amber { background: #fff4d8; }
-.stat-card__icon--red { background: #ffebee; }
-
-/* Shared page components */
-.app-content > .space-y-6 > .bg-white,
-.app-content .bg-white.rounded-2xl,
-.app-content .bg-white.rounded-lg {
-  border-color: var(--border);
-  box-shadow: 0 10px 30px rgba(35, 60, 105, .06);
-}
-
-.app-content input,
-.app-content select,
-.app-content textarea {
-  border-color: #dce5f2;
-  background: rgba(255, 255, 255, .95);
-  box-shadow: 0 1px 2px rgba(15, 36, 78, .025);
-  transition: border-color .2s, box-shadow .2s, background .2s;
-}
-
-.app-content input:focus,
-.app-content select:focus,
-.app-content textarea:focus {
-  border-color: #5c87ee;
-  box-shadow: 0 0 0 4px rgba(76, 123, 229, .12);
-}
-
-.app-content table thead tr { background: #f5f8fe; }
-.app-content table tbody tr { transition: background .18s ease; }
-.app-content table tbody tr:hover { background: #f7faff; }
-
-.app-content .overflow-x-auto {
-  scrollbar-color: #aabce1 transparent;
-  scrollbar-width: thin;
-}
-
-.app-content .bg-blue-50 { background-color: #eef5ff; }
-
-.app-content button.bg-blue-600,
-.app-content button[class*="bg-blue-600"] {
-  box-shadow: 0 8px 16px rgba(37, 99, 235, .20);
-}
-
-/* Dark mode */
-.is-dark { --canvas: #091226; --card: rgba(17, 30, 56, .88); --border: #263755; --ink: #eef5ff; --muted: #9dadc7; }
-.is-dark .app-topbar { background: rgba(10, 20, 40, .80); border-color: #233453; }
-.is-dark .app-content .bg-white,
-.is-dark .app-content .bg-slate-50 { background-color: rgba(17, 30, 56, .88) !important; }
-.is-dark .app-content .text-slate-900,
-.is-dark .app-content .text-slate-800,
-.is-dark .app-content .text-slate-700 { color: #eef5ff !important; }
-.is-dark .app-content .text-slate-500,
-.is-dark .app-content .text-slate-600 { color: #a9b8d0 !important; }
-.is-dark .app-content input,
-.is-dark .app-content select,
-.is-dark .app-content textarea { background: #0d1b34; color: #eef5ff; border-color: #314464; }
-.is-dark .app-content table thead tr,
-.is-dark .app-content table tbody tr:hover { background: #182946 !important; }
-.is-dark .app-footer { color: #9dadc7; }
-.is-dark .app-topbar .text-slate-800 { color: #eef5ff !important; }
-
-@media (max-width: 1023px) {
-  .app-content { padding-top: 5rem; }
-}
+.dark .bg-green-50 { background-color: #123c2b !important; }
+.dark .bg-yellow-50 { background-color: #4a3510 !important; }
+.dark .bg-red-50 { background-color: #4a2025 !important; }
+.dark .text-green-700,
+.dark .text-green-600 { color: #86efac !important; }
+.dark .text-yellow-700,
+.dark .text-yellow-600 { color: #fde68a !important; }
+.dark .text-red-700,
+.dark .text-red-500 { color: #fca5a5 !important; }
       
